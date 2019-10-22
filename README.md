@@ -30,30 +30,30 @@ If a `command` is not understood by the server or incorrect it will respond with
     To insert a new article in the database with the specified price. The name cannot contain the semicolon (`;`) character.  
     The server responds with `article OK`.
   * `add <name> [qty]`:
-    To add an article to the current basket with an optional quantity being 1 by default. The name cannot contain the semicolon (`;`) character.  
+    To add an article to the current cart with an optional quantity being 1 by default. The name cannot contain the semicolon (`;`) character.  
     The server broadcasts this message:  
     `article name;price;total_qty`
   * `remove <name> [qty]`:
-    To remove an article from the current basket. If the quantity is not specified, removes all instances of the article.
+    To remove an article from the current cart. If the quantity is not specified, removes all instances of the article.
     The server broadcasts this message:  
     `article name;price;total_qty`
   * `clear`:
-    To empty the current basket and broadcast it. **Cannot be undone**.
+    To empty the current cart and broadcast it. **Cannot be undone**.
   * `list`:
   * `get`:
-    Returns the current state of the basket.  
-    → The server returns the basket with this format:  
-      `basket article1;price;qty article2;price;qty ...`
+    Returns the current state of the cart.  
+    → The server returns the cart with this format:  
+      `cart article1;price;qty article2;price;qty ...`
 * `cart <action>`:
-  Used to control the basket, with `action` being one of these values:
+  Used to control the cart, with `action` being one of these values:
   * `list`:
   * `get`:
-    Returns the current basket with this format:  
+    Returns the current cart with this format:  
       `cart article1;price;qty article2;price;qty ...`
   * `clear`:
-    To empty the current basket and broadcast it. **Cannot be undone**.
+    To empty the current cart and broadcast it. **Cannot be undone**.
 * `payment <method> <account>`:
-  Used to pay a basket with the method being either a `card` or a `check`, the account being a string of the account IBAN.
+  Used to pay a cart with the method being either a `card` or a `check`, the account being a string of the account IBAN.
 
 ## Errors
 
