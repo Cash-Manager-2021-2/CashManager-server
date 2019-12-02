@@ -99,8 +99,8 @@ public class CashHandler implements WebSocketHandler {
                         .filter(Pair::getFirst)
                         .map(Pair::getSecond)
                         .mergeWith(notifier
-                            .filter(v -> v.getFirst() != Identity.getId(session))
-                            .map(Pair::getSecond)
+                                .filter(v -> v.getFirst().equals(Identity.getId(session)))
+                                .map(Pair::getSecond)
                         )
                         .filter(v -> identities.containsKey(session.getId()))
                         .map(session::textMessage)
