@@ -188,16 +188,9 @@ public class CashHandler implements WebSocketHandler {
                 return null;
             },
             (msg, s) -> {
-                if (msg.parameters[0].equals("clear")) {
-                    Carts.get(Identity.getId(s)).clear();
-                    return notify(Carts.get(Identity.getId(s)).toString(), s);
-                }
-                return null;
-            },
-            (msg, s) -> {
                 if (msg.parameters[0].equals("list") ||
                     msg.parameters[0].equals("get")) {
-                    return message(Carts.get(Identity.getId(s)).toString());
+                    return message("article " + itemRepository.findAll().stream().map((i) -> i.Name + ";" + i.Price).reduce((s1, s2) -> s1 + " " + s2).orElse(""));
                 }
                 return null;
             },
